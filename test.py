@@ -1,2 +1,0 @@
-print("mgohu")
-print("add")
