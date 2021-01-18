@@ -49,3 +49,12 @@ data soup의 범위를 타이트하게 잡아서 `job_link`를 좀더 간결하�
 `class extend_’class_name’(‘upper class’)` 로 표현하여 'upper class'를 상속시킨다.
 
 `method`의 `extend`도 `super().’class_name’(**kwargs)` 로 표현하여 `upper class`에 있는 `method`를 유지하면서 `extend` 할 수 있다
+
+
+### `GitHub`알게 된 것
+
+`local`의 링크와 `GitHub_reposit`링크가 안맞으면 커맨드(iterm)를 통해 올리고 내릴수없었다.
+
+그래서 `git clone (reposit_URL)`을 사용하여 복제해주니 다시 연결이 가능해졌다.
+
+GitHub에서 `GitHub_Desktop`을 제공해주던데 무엇인지 알아봐야겠다.
