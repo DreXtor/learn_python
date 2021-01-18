@@ -2,9 +2,9 @@
 
 python 공부 기록합니다
 
-## scrapper
+## 2021.01.17
 
-### 2021.01.17
+### web_scrapper
 
 `stackoverflow`사이트의 `job list scrapper`를 만들었습니다.
 
@@ -14,3 +14,36 @@ data soup의 범위를 타이트하게 잡아서 `job_link`를 좀더 간결하�
 
 선생님 코드와 비교해보며 공부하였습니다.
 
+## 2021.01.18
+
+### django에 대한 기본 지식
+
+`django` : python으로 웹사이트를 만드는데 사용하는 `웹 프레임워크`
+
+`argument`의 종류
+
+`*args` (position argument) : 위치에 있는 단일(?)값을 넣을수 있다
+
+`**kwargs` (keyword argument) : 키워드(어떤 값?string?) 을 넣을수 있냐?(서치)
+
+`객체지향 프로그래밍`은 코드를 정리하는 하나의 방법이라고 이해했다.
+
+`하나의 블루프린트(청사진.설계도)`로 `여러개의 instance`를 만들어 사용할수있다.
+
+`class`는 `무언가(instance)`를 구성할 기본형태를 만든다.
+
+`method` is `function(def)` inside of  `class`!
+
+`method`를 호출할때 `instance`를 초기 `argument`(_self_)로 사용한다
+
+`class` 안에는 기본적으로 들어있는 `method` 가 있다. #ex) __init__
+
+`dictionary` 는 `get`을 갖는다. `{dic_name}.get`
+
+`how to extend of class`
+
+`extend class`란? 기존의 class를 확장하여 필요한것을 추가한 class응 만드는 것.
+
+`class extend_’class_name’(‘upper class’)` 로 표현하여 'upper class'를 상속시킨다.
+
+`method`의 `extend`도 `super().’class_name’(**kwargs)` 로 표현하여 `upper class`에 있는 `method`를 유지하면서 `extend` 할 수 있다
