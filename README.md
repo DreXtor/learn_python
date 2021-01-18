@@ -1,8 +1,10 @@
-# web_scrapper
+# python
 
-웹스크레퍼 공부 기록합니다
+python 공부 기록합니다
 
-## 2021.01.17
+## scrapper
+
+### 2021.01.17
 
 `stackoverflow`사이트의 `job list scrapper`를 만들었습니다.
 
