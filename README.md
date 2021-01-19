@@ -58,3 +58,29 @@ data soup의 범위를 타이트하게 잡아서 `job_link`를 좀더 간결하�
 그래서 `git clone (reposit_URL)`을 사용하여 복제해주니 다시 연결이 가능해졌다.
 
 GitHub에서 `GitHub_Desktop`을 제공해주던데 무엇인지 알아봐야겠다.
+
+
+
+## 2021.01.19
+
+###visual studio code 단축키
+
+`cmd + d` : 같은 코드를 선택하여 한번에 수정할수있다.
+
+`option + click` : 클릭하는 곳에 한번에 입력할수있다.
+
+`option + up/down` : 선택한 코드를 위/아래로 이동시킬수 있다.
+
+`option + shift + up/down` : 선택한 코드를 위/아래로 복사하여 이동시킬수있다.
+
+`cmd + /` 해당 줄 전체를 주석처리해준다.
+
+`option + shift + i` : 선택된 영역에 커서가 생겨서 한번에 수정할수있다.
+
+`option + shift + drag ` : 드래그한 모든 영역에 커서가 생겨서 한번에 수정할수있다.
+
+`cmd + up/down` : 맨 위로, 맨 아래로
+
+`cmd + b` : 사이드바 숨기기
+
+
