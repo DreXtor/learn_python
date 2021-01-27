@@ -85,6 +85,7 @@ while running:
         enermy_Y_position = 0
         enermy_X_position = randint(0, screen_width - enermy_width)
     # 4. 충돌 처리
+    # 위치 기반
 
     # 5. 화면에 그리기
     screen.blit(background, (0, 0))
