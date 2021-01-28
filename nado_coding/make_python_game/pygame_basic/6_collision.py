@@ -91,6 +91,7 @@ while running:  # 게임이 진행중인가?
         character_Y_position = screen_height - character_height
 
     # 충돌 처리
+
     character_rect = character.get_rect()
     character_rect.left = character_X_position
     character_rect.top = character_Y_position
