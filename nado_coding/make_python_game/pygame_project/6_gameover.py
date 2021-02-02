@@ -2,11 +2,13 @@
 # 2. 캐릭터는 공에 닿으면 게임 종료 (실패)
 # 3. 시간제한 99초 초과시 게임 종료 (실패)
 
+from os.path import split
 import pygame
 import os
 
 from pygame import image
 from pygame.constants import KEYDOWN, K_LEFT, K_RIGHT, K_SPACE
+import time
 
 ##########################################################################################################################
 # 기본 초기화 (반드시 해야하는것들)
@@ -186,6 +188,23 @@ while running:
 
         # 공과 캐릭터 충돌 처리
         if character_rect.colliderect(ball_rect):
+
+            # 지면 애플월드 이미지 로드
+            apple_world = pygame.image.load(
+                os.path.join(image_path, "apple_world.png"))
+            apple_world_size = apple_world.get_rect().size
+            apple_world_width = apple_world_size[0]
+            apple_world_height = apple_world_size[1]
+            apple_world_x_pos = -apple_world_width
+            apple_world_y_pos = screen_height / 2 - apple_world_height / 2
+
+            apple_to_x = 10
+            apple_location = []
+
+            while apple_world_x_pos < screen_width / 2 - apple_world_width / 2:
+                apple_world_x_pos += apple_to_x
+                apple_location.append(apple_world_x_pos)
+
             running = False
             break
 
@@ -282,16 +301,18 @@ massage = game_font.render(game_result, True, (255, 255, 0))
 massage_rect = massage.get_rect(
     center=(int(screen_width/2), int(screen_height / 2)))
 
-# 지면 애플월드 이미지 로드
-apple_world = pygame.image.load(os.path.join(image_path, "apple_world.png"))
-apple_world_size = apple_world.get_rect().size
-apple_world_width = apple_world_size[0]
-apple_world_height = apple_world_size[1]
-apple_world_x_pos = -apple_world_width
-apple_world_y_pos = screen_height / 2 - apple_world_height / 2
 
-apple_location = [apple_world_x_pos]
-apple_to_x = 10
+for l in apple_location:
+    screen.blit(background, (0, 0))
+    # screen.blit(weapon, (weapon_x_pos, weapon_y_pos))
+    screen.blit(ball_images[ball_image_index], (ball_x_pos, ball_y_pos))
+    screen.blit(stage, (0, screen_height - stage_height))
+    screen.blit(character, (character_x_pos, character_y_pos))
+    screen.blit(
+        apple_world, (l, apple_world_y_pos))
+    pygame.display.update()
+    pygame.time.delay(80)
+# pygame.display.update()
 
 
 screen.blit(massage, massage_rect)
