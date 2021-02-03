@@ -92,12 +92,11 @@ ball_to_remove = -1
 
 # 폰트 정의
 game_font = pygame.font.Font(None, 40)
-total_time = 30
+total_time = 20
 start_ticks = pygame.time.get_ticks()       # 시작 시간 정의
 
 # 게임 종료 메시지 / Time Out(시간 초과) , Mission Complete(성공) , Game Over(캐릭터 죽음)
 game_result = "Game Over"
-
 
 running = True
 while running:
@@ -195,15 +194,19 @@ while running:
             apple_world_size = apple_world.get_rect().size
             apple_world_width = apple_world_size[0]
             apple_world_height = apple_world_size[1]
-            apple_world_x_pos = -apple_world_width
-            apple_world_y_pos = screen_height / 2 - apple_world_height / 2
-
-            apple_to_x = 10
+            apple_world_x_pos = screen_width / 2 - apple_world_width / 2
+            apple_world_y_pos = -screen_height
+            apple_to_y = 10
             apple_location = []
 
-            while apple_world_x_pos < screen_width / 2 - apple_world_width / 2:
-                apple_world_x_pos += apple_to_x
-                apple_location.append(apple_world_x_pos)
+            while apple_world_y_pos < screen_height / 2 - apple_world_height / 2:
+                if apple_world_y_pos >= screen_height / 2 - apple_world_height / 2:
+                    apple_world_y_pos = screen_height / 2 - apple_world_height / 2
+                    apple_location.append(apple_world_y_pos)
+                    break
+                else:
+                    apple_world_y_pos += apple_to_y
+                    apple_location.append(apple_world_y_pos)
 
             running = False
             break
@@ -291,33 +294,52 @@ while running:
 
     # 시간이 초과했다면?
     if total_time - elapsed_time <= 0:
+
         game_result = "Time Out"
+
+        # 지면 애플월드 이미지 로드
+        apple_world = pygame.image.load(
+            os.path.join(image_path, "apple_world.png"))
+        apple_world_size = apple_world.get_rect().size
+        apple_world_width = apple_world_size[0]
+        apple_world_height = apple_world_size[1]
+        apple_world_x_pos = screen_width / 2 - apple_world_width / 2
+        apple_world_y_pos = -screen_height
+        apple_to_y = 20
+        apple_location = []
+        while apple_world_y_pos < screen_height / 2 - apple_world_height / 2:
+            if apple_world_y_pos >= screen_height / 2 - apple_world_height / 2:
+                apple_world_y_pos = screen_height / 2 - apple_world_height / 2
+                apple_location.append(apple_world_y_pos)
+                break
+            else:
+                apple_world_y_pos += apple_to_y
+                apple_location.append(apple_world_y_pos)
+
         running = False
 
     pygame.display.update()
 
 # 게임 오버 메시지
-massage = game_font.render(game_result, True, (255, 255, 0))
+massage = game_font.render(game_result, True, (255, 0, 0))
 massage_rect = massage.get_rect(
-    center=(int(screen_width/2), int(screen_height / 2)))
+    center=(int(screen_width / 2), int(screen_height / 2)))
 
-
-for l in apple_location:
-    screen.blit(background, (0, 0))
-    # screen.blit(weapon, (weapon_x_pos, weapon_y_pos))
-    screen.blit(ball_images[ball_image_index], (ball_x_pos, ball_y_pos))
-    screen.blit(stage, (0, screen_height - stage_height))
-    screen.blit(character, (character_x_pos, character_y_pos))
-    screen.blit(
-        apple_world, (l, apple_world_y_pos))
-    pygame.display.update()
-    pygame.time.delay(80)
-# pygame.display.update()
-
-
+if game_result == "Time Out" or game_result == "Game Over":
+    for l in apple_location:
+        screen.blit(background, (0, 0))
+        # screen.blit(weapon, (weapon_x_pos, weapon_y_pos))
+        screen.blit(ball_images[ball_image_index], (ball_x_pos, ball_y_pos))
+        screen.blit(stage, (0, screen_height - stage_height))
+        screen.blit(character, (character_x_pos, character_y_pos))
+        screen.blit(
+            apple_world, (apple_world_x_pos, l))
+        pygame.display.update()
+        pygame.time.delay(80)
 screen.blit(massage, massage_rect)
 pygame.display.update()
 
-pygame.time.delay(2000)
+
+pygame.time.delay(3000)
 
 pygame.quit()
